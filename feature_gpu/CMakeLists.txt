@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.8)
+
+project(feature_gpu)
+find_package(PCL 1.6 REQUIRED)
+find_package(CUDA REQUIRED)
+INCLUDE(FindCUDA)
+#INCLUDE_DIRECTORIES(/home/vless/pcl/gpu/features/include)
+#INCLUDE_DIRECTORIES(/home/vless/pcl/gpu/octree/include)
+#INCLUDE_DIRECTORIES(/home/vless/pcl/gpu/containers/include)
+#INCLUDE_DIRECTORIES(/home/vless/pcl/gpu/utils/include)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARIES_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable(normal_cuda "main.cpp")
+target_link_libraries(normal_cuda ${PCL_LIBRARIES})
+#add_executable(normal_nogpu "compute_nogpu.cpp")
+#target_link_libraries(normal_nogpu ${PCL_LIBRARIES})
